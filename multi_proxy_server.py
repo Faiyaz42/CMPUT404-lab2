@@ -44,12 +44,12 @@ def main():
                 
                 proxy_end.connect((remote_ip,port))
                 
-                
-                conn, addr = s.accept()
-                p = Process(target=handle_request, args=(addr,conn))
-                p.daemon = True 
-                p.start()
-                print("Started process",p)
+                while True:
+                    conn, addr = s.accept()
+                    p = Process(target=handle_request, args=(addr,conn))
+                    p.daemon = True 
+                    p.start()
+                    print("Started process",p)
                 
                 
                 
